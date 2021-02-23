@@ -2,30 +2,30 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBConnection {
+public  class DBConnection {
 	   
 		String BDD = "nomBD";
 		String url = "jdbc:mysql://localhost:3306/" + BDD;
 		String user = "root";
 		String passwd = "";
-	    private static Connection conn;
-
+	    public Connection conn;
+	    public static DBConnection DB;
 	   
 	    private DBConnection() throws SQLException {
 			conn=DriverManager.getConnection(url, user,passwd);
 		}
-
-	    
-	    public static Connection getConn() {
-	    	if(conn==null) {
+	    public static synchronized DBConnection getConn() {
+	    	if(DB==null) {
 	    		try {
-					DBConnection DB=new DBConnection();
+					 DB=new DBConnection();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 	    	}
-	    	return conn;
+	    	System.out.println("Creation of a new connection...");
+	    	
+	    	return DB;
 		}
 
 
