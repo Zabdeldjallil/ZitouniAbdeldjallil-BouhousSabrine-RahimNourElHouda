@@ -22,13 +22,13 @@ public class UniversiteRepository {
 		String sql = "select * from universite where id_universite="+ universityId;
 		ResultSet rs = stmt.executeQuery(sql);
 		rs.next();
-		//System.out.println(rs.getString(2));
+		System.out.println(rs.getString(3));
 		TypePackage p=TypePackage.valueOf(rs.getString(3));
 		Universite u = new Universite (rs.getInt(1),rs.getString(2),p);
 			
 		System.out.println("LogBD : universit� r�cup�r�e");
 		
-		connect.close();
+		//connect.close();
 		return u;	
 	
 		

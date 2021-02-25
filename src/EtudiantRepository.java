@@ -22,7 +22,7 @@ public class EtudiantRepository {
 			}else if (rs == 0){
 				System.out.println("log : Echec de l'ajout dans la BD de l'�tudiant  du Matricule" + E.getMatricule());
 			}
-		connect.close();
+		//connect.close();
 	 }
 
 
@@ -40,11 +40,11 @@ public class EtudiantRepository {
 		
 		if (rs){
 			System.out.println("logBD--- :email existe dans la BD  " + email);
-			connect.close();
+			//connect.close();
 			return true;
 			}
 		System.out.println("logBD--- : email n'existe pas " + email);	
-		connect.close();
+		//connect.close();
 		return false;
 	}
 	
@@ -62,11 +62,11 @@ public class EtudiantRepository {
 		
 		if (rs){
 			System.out.println("logBD--- :etudiant avec ce matricule existe d�ja dans la BD  " + mat);
-			connect.close();
+			//connect.close();
 			return true;
 			}
 		System.out.println("logBD----: etudiant avec ce matricule n'existe pas " + mat);	
-		connect.close();
+		//connect.close();
 		return false;
 	}
 
