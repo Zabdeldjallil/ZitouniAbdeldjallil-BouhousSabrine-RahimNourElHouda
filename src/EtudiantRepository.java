@@ -10,8 +10,9 @@ public class EtudiantRepository {
 	void add(Etudiant E) throws SQLException
 	{
 
-		DBConnection BD= DBConnection.getConn();
-		Connection connect=BD.conn;
+		//DBConnection BD= DBConnection.getConn();
+		//Connection connect=BD.conn;
+		Connection connect=DBConnection.getConn();
 		Statement stmt = connect.createStatement();
 		String sql = "INSERT into etudiant values (" + E.getMatricule() + ",'" + E.getNom() + "','" + E.getPrenom() + "','" + E.getEmail() + "'," +E.getNbLivreMensuel_Autorise() + "," +E.getNbLivreEmprunte() + "," +E.getId_universite()+")";
 		int rs = stmt.executeUpdate(sql);
@@ -29,8 +30,9 @@ public class EtudiantRepository {
 	{
 		//DBConnection BD= new DBConnection();
 		//Connection connect=BD.getConn();
-		DBConnection BD= DBConnection.getConn();
-		Connection connect=BD.conn;
+		//DBConnection BD= DBConnection.getConn();
+		//Connection connect=BD.conn;
+		Connection connect=DBConnection.getConn();
 		
 		Statement stmt = connect.createStatement();
 		String sql = "select * from etudiant where email='"+ email+"'";
@@ -50,8 +52,9 @@ public class EtudiantRepository {
 	{
 		//DBConnection BD= new DBConnection();
 		//Connection connect=BD.getConn();
-		DBConnection BD= DBConnection.getConn();
-		Connection connect=BD.conn;
+		//DBConnection BD= DBConnection.getConn();
+		//Connection connect=BD.conn;
+		Connection connect=DBConnection.getConn();
 		
 		Statement stmt = connect.createStatement();
 		String sql = "select * from etudiant where matricule="+ mat;

@@ -12,15 +12,17 @@ public class UniversiteRepository {
 		
 		//DBConnection BD= new DBConnection();
 		//Connection connect=BD.getConn(); 
-		DBConnection BD= DBConnection.getConn();
-		Connection connect=BD.conn;
+		//DBConnection BD= DBConnection.getConn();
+		//System.out.println(BD);
+		Connection connect=DBConnection.getConn();
 		
 		Statement stmt = connect.createStatement();
 		System.out.println("LogBD : d�but recherche de id universit� dans la base de donn�e");
 		
 		String sql = "select * from universite where id_universite="+ universityId;
 		ResultSet rs = stmt.executeQuery(sql);
-		rs.next();	
+		rs.next();
+		//System.out.println(rs.getString(2));
 		TypePackage p=TypePackage.valueOf(rs.getString(3));
 		Universite u = new Universite (rs.getInt(1),rs.getString(2),p);
 			
