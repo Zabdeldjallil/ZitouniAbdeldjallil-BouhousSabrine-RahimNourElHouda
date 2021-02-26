@@ -1,6 +1,6 @@
 import java.io.FileWriter;  // Import the File class
 import java.io.IOException;  // Import the IOException class to handle errors
-class AfficheFichier implements IJournal{
+class AfficheFichier extends AffichageEcran{
 
 	@Override
 	public void outPut_Msg(String message) {

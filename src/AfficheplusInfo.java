@@ -1,6 +1,6 @@
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;  
-public class AfficheplusInfo implements IJournal {
+public class AfficheplusInfo extends AffichageEcran {
 
 	@Override
 	public void outPut_Msg(String message) {

@@ -24,8 +24,15 @@ public  class DBConnection {
 					e.printStackTrace();
 				}
 	    	}
-	    	System.out.println("Creation of a new connection...");
-	    	
+	    	//System.out.println("Creation of a new connection...");
+	    	AfficheDifferent obj=new AfficheDifferent();
+	    	AffichageEcran P=new AffichageEcran();
+			AfficheFichier F=new AfficheFichier();
+			AfficheplusInfo A=new AfficheplusInfo();
+			obj.add(P);
+			obj.add(F);
+			obj.add(A);
+			obj.outPut_Msg("toto");
 	    	return conn;
 		}
 

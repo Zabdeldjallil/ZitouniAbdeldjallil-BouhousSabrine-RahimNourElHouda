@@ -1,16 +1,21 @@
-
-public class AfficheDifferent implements IJournal{
-
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.awt.*;
+import java.util.Arrays;
+public class AfficheDifferent extends AffichageEcran{
+	public List<IJournal> children = new ArrayList<>();
+	public void add(IJournal component) {
+        children.add(component);
+    }
 	@Override
 	public void outPut_Msg(String message) {
 		// TODO Auto-generated method stub
-		 AffichageEcran AE=new AffichageEcran();
-		 AfficheFichier AF=new AfficheFichier();
-		 AfficheplusInfo API=new AfficheplusInfo(); 
-		AE.outPut_Msg(message);
-		AF.outPut_Msg(message);
-		API.outPut_Msg(message);
-		    
+		//System.out.println("sokoksqd");
+		//System.out.println(children.size());
+		for(int i=0; i<children.size(); i++) {
+			children.get(i).outPut_Msg(message);;
+		}   
 	}
-
 }
