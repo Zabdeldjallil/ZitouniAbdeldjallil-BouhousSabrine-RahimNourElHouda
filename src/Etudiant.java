@@ -1,3 +1,7 @@
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Etudiant {
 
@@ -70,7 +74,44 @@ public class Etudiant {
 		public void setNbLivreMensuel_Autorise(int nbLivreMensuel_Autorise) {
 			this.nbLivreMensuel_Autorise = nbLivreMensuel_Autorise;
 		}
+		public void addNbLivreMensuel_Autorise() throws SQLException {
+			 Connection connect=DBConnection.getConn();
+	            Statement stmt = connect.createStatement();
+	            int Nbr_L_M=this.getNbLivreMensuel_Autorise();
+	            if(Nbr_L_M != 0) {
+	                int Id_Un=this.getId_universite();
+	            String sql = "select TypePackage from etudiant where id_universite="+ Id_Un;
+	            ResultSet rs = stmt.executeQuery(sql);
+	            rs.next();
+	                if(rs.getString(0)=="Standard") {
+	                    this.nbLivreMensuel_Autorise+=5;
+	                }else if(rs.getString(0)=="Premium") {
+	                    this.nbLivreMensuel_Autorise+=10;
 
+	                }else{
+	                System.out.print("Failed successfully");
+	            }
+
+	            }else {
+	                System.out.print("Le forfait de cet etudiant est illimité ");
+	            }
+			/*int id=this.getId_universite();
+			Connection connect=DBConnection.getConn();
+			
+			Statement stmt = connect.createStatement();
+			String sql = "select TypePackage from universite where id_universite="+ id;
+			ResultSet rs = stmt.executeQuery(sql);;
+			rs.next();
+			
+				if(rs.getString(0)=="Standard") this.nbLivreMensuel_Autorise+=5;
+				else {
+					if(rs.getString(0)=="Premium"){
+						this.nbLivreMensuel_Autorise+=10;
+					}else {
+						System.out.println("Failed successfully");
+					}
+				} */
+		}
 
 		public int getNbLivreEmprunte() {
 			return nbLivreEmprunte;

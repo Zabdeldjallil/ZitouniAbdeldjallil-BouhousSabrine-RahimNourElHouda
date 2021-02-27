@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -14,40 +15,52 @@ public class EtudiantService {
 	    Universite univ=UnivRep.GetById(id_universite);
 	    
 	    System.out.println("Log: d�but de l'op�ration d'ajout de l'�tudiant avec matricule "+matricule);
-	    
-	    if(email == null || email.length() == 0)
-	    {
-	    	return false;
-	    }
-	    
-	    if (StudRep.Exists(matricule))
-	    {
-	        return false;
-	    }
-	    
-		if (StudRep.Exists(email))
-	    {
-	        return false;
-	    }
+	
+		verifEmail verification=new verifEmail();
+		boolean b=verification.verifmail(email, matricule);
+		if(b==false) return false;
 		
+		packing p=new packing();
+		String a=p.veriftype(univ);
 		
+		AbsFactory abs=new AbsFactory();
+		appabs ab=abs.getPlan(a);
+		ab.apply(a, stud);
 		
-		 if (univ.getPack() == TypePackage.Standard)
+		//applying app=new applying();
+		//app.apply(a, stud);
+		 /*if (univ.getPack() == TypePackage.Standard)
 	     {
 	          stud.setNbLivreMensuel_Autorise(10);
 	     }
 	     else if (univ.getPack() == TypePackage.Premium)
 	     {
 	    	 stud.setNbLivreMensuel_Autorise(10*2);
-	     }                           
+	     }    */                       
 	     
 		 StudRep.add(stud);
 		 System.out.println("Log: Fin de l'op�ration d'ajout de l'�tudiant avec matricule "+matricule);
 		 return true;
-	    
-		
 	}
-	
+	public void AjouterBonus(Etudiant E) throws SQLException {
+        if(E.getNbLivreMensuel_Autorise()!= 0) {
+        	Connection connect=DBConnection.getConn();
+        	Statement stmt = connect.createStatement();
+        	String sql = "select TypePackage from etudiant where id_universite="+ E.getId_universite();
+        	ResultSet rs = stmt.executeQuery(sql);
+        	rs.next();
+
+       if(rs.getString(0) =="Standard") {
+    	   E.setNbLivreMensuel_Autorise(E.getNbLivreEmprunte()+5);
+
+    }else if(rs.getString(0) =="Premium") {
+    	   E.setNbLivreMensuel_Autorise(E.getNbLivreEmprunte()+10);
+
+    }
+        }else {
+            System.out.print("Le forfait de cet etudiant est illimité ");
+        }
+}
 	
 	
 
