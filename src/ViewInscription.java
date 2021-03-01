@@ -8,7 +8,7 @@ import java.awt.event.*;
 
 
 import javax.swing.*;
-class ViewInscription {
+class ViewInscription extends ViewAbs{
 	public void create() {
 		
 		JFrame frame= new JFrame();
@@ -80,8 +80,9 @@ class ViewInscription {
 	         public void actionPerformed(ActionEvent e) {
 	            //statusLabel.setText("Ok Button is clicked here");
 	         //System.out.println(matInput.getText());
-	      ControleurInscription controling=new ControleurInscription();
-controling.control(Integer.parseInt(matInput.getText()) ,nomInput.getText(),preInput.getText(),emailInput.getText(),pwdInput.getText(),Integer.parseInt(idInput.getText()) );
+	      //ControleurInscription controling=new ControleurInscription();
+//controling.control(Integer.parseInt(matInput.getText()) ,nomInput.getText(),preInput.getText(),emailInput.getText(),pwdInput.getText(),Integer.parseInt(idInput.getText()) );
+	        control( Integer.parseInt(matInput.getText()) ,nomInput.getText(),preInput.getText(),emailInput.getText(),pwdInput.getText(),Integer.parseInt(idInput.getText()) );
 	         }
 	      });
 		//add a listener to button cancel
@@ -101,5 +102,6 @@ controling.control(Integer.parseInt(matInput.getText()) ,nomInput.getText(),preI
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
+	
 	
 }
