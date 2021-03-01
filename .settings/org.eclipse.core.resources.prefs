@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
-encoding//src/Etudiant.java=UTF-8
-encoding//src/EtudiantRepository.java=UTF-8
-encoding//src/EtudiantService.java=UTF-8
-encoding//src/UniversiteRepository.java=UTF-8
-encoding//src/ViewInscription.java=UTF-8
+encoding//src/etudiantPackage/Etudiant.java=UTF-8
+encoding//src/etudiantPackage/EtudiantRepository.java=UTF-8
+encoding//src/inscriptionStudents/EtudiantService.java=UTF-8
+encoding//src/inscriptionStudents/ViewInscription.java=UTF-8
+encoding//src/universityPackage/Universite.java=UTF-8
+encoding//src/universityPackage/UniversiteRepository.java=UTF-8
