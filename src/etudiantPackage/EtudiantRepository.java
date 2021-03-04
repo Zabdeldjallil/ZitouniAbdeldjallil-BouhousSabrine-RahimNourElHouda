@@ -2,6 +2,7 @@ package etudiantPackage;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -31,7 +32,7 @@ public class EtudiantRepository {
 			obj.add(P);
 			obj.add(F);
 			obj.add(A);
-			obj.outPut_Msg("toto");
+			
 			obj.outPut_Msg("log : ajout dans la BD r�ussi de l'�tudiant  du Matricule" + E.getMatricule());	
 			//System.out.println("log : ajout dans la BD r�ussi de l'�tudiant  du Matricule" + E.getMatricule());
 			}else if (rs == 0){
@@ -45,17 +46,13 @@ public class EtudiantRepository {
 	public boolean Exists(String email) throws SQLException	
 	{
 		AfficheDifferent obj=new AfficheDifferent();
-		//DBConnection BD= new DBConnection();
-		//Connection connect=BD.getConn();
-		//DBConnection BD= DBConnection.getConn();
-		//Connection connect=BD.conn;
 		Connection connect=DBConnection.getConn();
 		
 		Statement stmt = connect.createStatement();
-		String sql = "select * from etudiant where email='"+ email+"'";
-		boolean rs = stmt.execute(sql);
-		
-		if (rs){
+		String sql = "select * from etudiant where email='" +email+"'";
+		ResultSet rs = stmt.executeQuery(sql);
+        boolean next=rs.next();
+		if (next==true){
 			obj.outPut_Msg("logBD--- :email existe dans la BD  " + email);
 			//System.out.println("logBD--- :email existe dans la BD  " + email);
 			//connect.close();
@@ -70,22 +67,19 @@ public class EtudiantRepository {
 	public boolean Exists(int mat) throws SQLException	
 	{
 		AfficheDifferent obj=new AfficheDifferent();
-		//DBConnection BD= new DBConnection();
-		//Connection connect=BD.getConn();
-		//DBConnection BD= DBConnection.getConn();
-		//Connection connect=BD.conn;
 		Connection connect=DBConnection.getConn();
 		
 		Statement stmt = connect.createStatement();
 		String sql = "select * from etudiant where matricule="+ mat;
-		boolean rs = stmt.execute(sql);
-		
-		if (rs){
-			
-			//System.out.println("logBD--- :etudiant avec ce matricule existe d�ja dans la BD  " + mat);
-			//connect.close();
-			return true;
-			}
+		//boolean rs = stmt.execute(sql);
+		ResultSet rs = stmt.executeQuery(sql);
+        boolean next=rs.next();
+        if(next==true) {
+        	
+        	System.out.println("logBD--- :etudiant avec ce matricule existe d�ja dans la BD  " + mat);
+        	return true;
+        }
+
 		//System.out.println("logBD----: etudiant avec ce matricule n'existe pas " + mat);	
 		AffichageEcran P=new AffichageEcran();
 		AfficheFichier F=new AfficheFichier();

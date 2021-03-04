@@ -7,9 +7,10 @@ public void control(int matricule, String nom, String prenom, String email,Strin
 	
 	try {
 		serv.inscription(matricule, nom, prenom, email,pwd, id_universite);
-		
+		System.out.println("done");
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
+		System.out.println("failed to add");
 		e.printStackTrace();
 	}
 }

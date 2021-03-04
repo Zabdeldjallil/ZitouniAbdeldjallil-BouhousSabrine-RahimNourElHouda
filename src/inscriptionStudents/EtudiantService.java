@@ -12,7 +12,7 @@ import universityPackage.*;
 public class EtudiantService {
 	
 	
-	boolean inscription (int matricule, String nom, String prenom, String email,String pwd, int id_universite) throws SQLException	
+	public boolean inscription (int matricule, String nom, String prenom, String email,String pwd, int id_universite) throws SQLException	
 	{
 		EtudiantRepository StudRep= new EtudiantRepository();
 	    UniversiteRepository UnivRep= new UniversiteRepository();
@@ -31,7 +31,7 @@ public class EtudiantService {
 		AbsFactory abs=new AbsFactory();
 		appabs ab=abs.getPlan(a);
 		ab.apply(a, stud);
-		
+		System.out.println("the student has"+stud);
 		//applying app=new applying();
 		//app.apply(a, stud);
 		 /*if (univ.getPack() == TypePackage.Standard)

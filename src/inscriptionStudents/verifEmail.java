@@ -10,16 +10,20 @@ public boolean verifmail(String email,int matricule) throws SQLException {
 	UniversiteRepository UnivRep= new UniversiteRepository();
 	if(email == null || email.length() == 0)
 	    {
+		System.out.println("faregh");
 	    	return false;
 	    }
-	if (StudRep.Exists(matricule))
+	if (StudRep.Exists(matricule)==true)
 		    {
+		System.out.println("kayen matricule");
 		        return false;
+		        
 		    }
-	if (StudRep.Exists(email))
+	if (StudRep.Exists(email)==true)
     {
+		System.out.println("kayen email");
         return false;
     }
-	else return true;
+	return true;
 }
 }

@@ -81,9 +81,9 @@ public class ViewInscription extends ViewAbs{
 	         public void actionPerformed(ActionEvent e) {
 	            //statusLabel.setText("Ok Button is clicked here");
 	         //System.out.println(matInput.getText());
-	      //ControleurInscription controling=new ControleurInscription();
+	      ControleurInscription controling=new ControleurInscription();
 //controling.control(Integer.parseInt(matInput.getText()) ,nomInput.getText(),preInput.getText(),emailInput.getText(),pwdInput.getText(),Integer.parseInt(idInput.getText()) );
-	        control( Integer.parseInt(matInput.getText()) ,nomInput.getText(),preInput.getText(),emailInput.getText(),pwdInput.getText(),Integer.parseInt(idInput.getText()) );
+	        controling.control( Integer.parseInt(matInput.getText()) ,nomInput.getText(),preInput.getText(),emailInput.getText(),pwdInput.getText(),Integer.parseInt(idInput.getText()) );
 	         }
 	      });
 		//add a listener to button cancel
