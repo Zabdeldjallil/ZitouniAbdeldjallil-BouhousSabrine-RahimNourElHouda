@@ -13,7 +13,7 @@ public  class DBConnection {
 		String BDD = "nomDB";
 		String url = "jdbc:mysql://localhost:3306/" + BDD;
 		String user = "root";
-		String passwd = "12011999";
+		String passwd = "";
 	    public static Connection conn;
 	    //public static DBConnection DB;
 	   
